@@ -12,7 +12,7 @@ const visitAllNodes = function(node, callback) {
   //  if no, return;
   //  otherwise, visitAllNodes(children)
   callback(node);
-  if(node.childNodes.length > 0)   {
+  if(node.childNodes)   {
     const children = node.childNodes;
     children.forEach(childNode => visitAllNodes(childNode, callback));
   } else {
@@ -23,6 +23,11 @@ const visitAllNodes = function(node, callback) {
 const flattenTreeToArray = function(node) {
   // Hint: Use visitAllNodes()
   // Your code here
+  // at each node, we want to push it into an array, so that can be
+  // the callback
+  const treeArray = [];
+  visitAllNodes(node, (eachNode) => treeArray.push(eachNode));
+  return treeArray;
 };
 
 module.exports = {
