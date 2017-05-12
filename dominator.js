@@ -19,20 +19,12 @@ const getElementsByClassName = function(root, className) {
   // Your code here
   // attribute name we care about: className
   const treeArray = flattenTreeToArray(root);
-  const elementsWithClassName = [];
-  for(let i = 0; i < treeArray.length; i++) {
-    if(treeArray[i].className) {
-      let classString = treeArray[i].className;
-      console.log(classString);
-      let classStringArray = classString.split(' ');
-      for(let j = 0; j < classStringArray.length; j++) {
-        if(classStringArray[j] === className) {
-          elementsWithClassName.push(treeArray[i]);
-        }
-      }
+  const els = _.filter(treeArray, (el) => {
+    if(el.className) {
+      return el.className.indexOf(className) !== -1;
     }
-  }
-  return elementsWithClassName;
+  })
+  return els;
 };
 
 const getElementsByTagName = function(root, tagName) {
