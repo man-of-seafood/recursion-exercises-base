@@ -5,19 +5,6 @@ const _ = require('underscore'); // the real one! :)
 // But you don't. So you're going to write it from scratch...
 
 const stringify = function(obj) {
-  // your code goes here
-  // probably a bunch of different type checks
-  // then depending on the type, you may need to recursively use the .toString()
-  // method
-  //number
-  //null
-  //undefined
-  //string
-  //bool
-  //object
-  //array
-  //have to code in the rules for the structure of an object/array
-  //but otherwise should just be able to call itself over and over
   if(typeof obj === 'number') {
     return obj.toString();
   }
@@ -49,9 +36,7 @@ const stringify = function(obj) {
     return str; 
   }
 };
-let x = {};
-console.log(typeof x);
-console.log(stringify(x));
+
 module.exports = {
   stringify: stringify
 };
