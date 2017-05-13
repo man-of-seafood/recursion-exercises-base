@@ -32,17 +32,25 @@ const stringify = function(obj) {
   }
   if(Array.isArray(obj)) {
     // spicier
-    let str = "[";
+    let str = '[';
     _.forEach(obj, el => str += stringify(el) + ',');
     if(str.length !== 1) {
       str = str.slice(0, str.length - 1);
     }
-    
-    str += "]";
+    str += ']';
     return str;
   }
+  if(typeof obj === 'object') {
+    let str = '{';
+    for(let key in obj) {
+      str += stringify(key) + ':' + stringify(obj[key]);
+    }
+    str += '}';
+    return str; 
+  }
 };
-let x = [[[['foo']]]];
+let x = {};
+console.log(typeof x);
 console.log(stringify(x));
 module.exports = {
   stringify: stringify
